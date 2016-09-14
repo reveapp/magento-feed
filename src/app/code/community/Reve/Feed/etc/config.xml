@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Reve_Feed>
+			<version>1.0.0</version>
+		</Reve_Feed>
+	</modules>
+
+	<global>
+		<helpers>
+			<revefeed>
+				<class>Reve_Feed_Helper</class>
+			</revefeed>
+		</helpers>
+	</global>
+
+	<frontend>
+		<routers>
+			<revefeed>
+				<use>standard</use>
+				<args>
+					<module>Reve_Feed</module>
+					<frontName>reve_feed</frontName>
+				</args>
+			</revefeed>
+		</routers>
+	</frontend>
+
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<revefeed translate="label" module="adminhtml">
+			<label>Reve Feed</label>
+			<tab>catalog</tab>
+			<sort_order>10</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label comment">
+					<label>General</label>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<reve_key translate="label comment">
+							<label>Reve key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>56</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<frontend_class>required-entry</frontend_class>
+						</reve_key>
+					</fields>
+					<fields>
+						<attr_names translate="label comment">
+							<label>Product size attributes names</label>
+							<frontend_type>text</frontend_type>
+							<comment>Comma separated list of attribute names (ex "size,size_shoe")</comment>
+							<sort_order>57</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</attr_names>
+					</fields>
+				</general>
+			</groups>
+		</revefeed>
+	</sections>
+</config>

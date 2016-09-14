@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <modules>
+    <Reve_Feed>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Reve_Feed>
+  </modules>
+</config>
