@@ -47,7 +47,7 @@ class Reve_Feed_Helper_Data extends Mage_Core_Helper_Abstract
 
 			if($parentIds){
 				$artno = intval($parentIds[0]);
-				$url =  Mage::getModel('catalog/product')->load($artno)->getUrlInStore();
+				$url =	Mage::getModel('catalog/product')->load($artno)->getUrlInStore();
 
 			}else if($groupedParentsIds){
 				$artno = intval($groupedParentsIds[0]);
@@ -77,6 +77,12 @@ class Reve_Feed_Helper_Data extends Mage_Core_Helper_Abstract
 			$prodData['price'] = Mage::helper('directory')->currencyConvert($finalPrice, $baseCurrencyCode, $currency);
 			if ($price != $finalPrice) {
 				$prodData['old_price'] = Mage::helper('directory')->currencyConvert($price, $baseCurrencyCode, $currency);
+			}
+
+			// round prices if SEK
+			if ($currency == 'SEK') {
+				if (isset($prodData['price'])) $prodData['price'] = round($prodData['price']);
+				if (isset($prodData['old_price'])) $prodData['old_price'] = round($prodData['old_price']);
 			}
 
 			// brand
