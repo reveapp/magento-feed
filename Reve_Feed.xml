@@ -10,7 +10,7 @@
    <description>Enable product feed to Reve</description>
    <license>OSL v3.0</license>
    <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
-   <version>0.1.1</version>
+   <version>0.2.0</version>
    <stability>stable</stability>
    <notes>Enable product feed to Reve</notes>
    <authors>

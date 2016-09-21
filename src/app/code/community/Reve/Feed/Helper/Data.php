@@ -19,6 +19,7 @@ class Reve_Feed_Helper_Data extends Mage_Core_Helper_Abstract
 	public function getProducts($batchSize, $storeID, $currency, $baseCurrencyCode, $lastProductId, $sizeAttrNames) {
 		$products = Mage::getResourceModel('catalog/product_collection')->setStore($storeID);
 		$products->addAttributeToFilter('status', 1);// get enabled prod
+		$products->addAttributeToFilter('type_id', array('neq' => 'grouped'));
 		$products->addFieldToFilter('entity_id', array('gt' => $lastProductId));
 		$products->setOrder('entity_id', Varien_Data_Collection::SORT_ORDER_ASC);
 		$products->setPageSize($batchSize)->load();
@@ -42,21 +43,9 @@ class Reve_Feed_Helper_Data extends Mage_Core_Helper_Abstract
 
 			// get parent product ID if exist and get url of parent
 			$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($productId);
-			$groupedParentsIds = Mage::getResourceSingleton('catalog/product_link')
-				->getParentIdsByChild($productId, Mage_Catalog_Model_Product_Link::LINK_TYPE_GROUPED);
-
 			if($parentIds){
 				$artno = intval($parentIds[0]);
 				$url =	Mage::getModel('catalog/product')->load($artno)->getUrlInStore();
-
-			}else if($groupedParentsIds){
-				$artno = intval($groupedParentsIds[0]);
-				$_p = Mage::getModel('catalog/product')->load($artno);
-				$url = $_p->getUrlInStore();
-
-				// use title and description from parent
-				$prodData['title'] = html_entity_decode(strip_tags($_p->getName()));
-				$prodData['description'] = html_entity_decode(strip_tags($_p->getDescription()));
 
 			}else{
 				$artno = intval($productId);
